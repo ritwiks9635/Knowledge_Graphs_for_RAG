@@ -1,1 +1,24 @@
-# Knowledge_Graphs_for_RAG
+# **Knowledge Graphs for RAG**
+
+**Knowledge graphs** are data structures that can be used in retrieval augmented generation (RAG) applications to enhance query understanding and retrieval accuracy. Knowledge graphs can capture the context and meaning behind data, which can help users uncover insights and connections that might be difficult to find with conventional databases. This contextual understanding is important for RAG applications to generate relevant and coherent responses. 
+In a knowledge graph, data is represented as nodes and relationships. Nodes represent entities like people, organizations, and locations, while relationships define connections between entities. For example, a knowledge graph might capture the "works for" relationship between Sarah, Michael, and prismaticAI. This would allow a RAG application to provide more relevant responses about their employment. 
+Some examples of RAG systems that use knowledge graphs include Graph RAG and combinations of Neo4j + LangChain. Graph RAG uses a graph database to enhance query understanding and retrieval accuracy. Neo4j + LangChain allows users to build question-answering systems that are powered by knowledge graphs.
+
+**How to do RAG?**
+To achieve Graph RAG for question answering, you need to select what part of the information that is available to you to send to the LLM. This is usually done by querying a database based on the intent in the user question. The most appropriate databases for this purpose are vector databases, which via embeddings capture the latent semantic meanings, syntactic structures, and relationships between items in a continuous vector space. The enriched prompt contains the user question together with the pre-selected additional information, so the generated answer takes it into account.
+
+
+
+As simple as the basic implementation is, you need to take into account a list of challenges and considerations to ensure good quality of the results:
+
+Data quality and relevance is crucial for the effectiveness of Graph RAG, so questions such as how to fetch the most relevant content to send the LLM and how much content to send it should be considered.
+Handling dynamic knowledge is usually difficult as one needs to constantly update the vector index with new data. Depending on the size of the data this can impose further challenges such as efficiency and scalability of the system.
+Transparency of the generated results is important to make the system trustworthy and usable. There are techniques for prompt engineering that can be used to stimulate the LLM to explain the source of the information included in the answer.
+The Different Varieties of Graph RAG
+Graph RAG is an enhancement over the popular RAG approach. Graph RAG includes a graph database as a source of the contextual information sent to the LLM. Providing the LLM with textual chunks extracted from larger sized documents can lack the necessary context, factual correctness and language accuracy for the LLM to understand the received chunks in depth. Unlike sending plain text chunks of documents to the LLM, Graph RAG can also provide structured entity information to the LLM combining the entity textual description with its many properties and relationships, thus encouraging deeper insights facilitated by the LLM. With Graph RAG each record in the vector database can have contextually rich representation increasing the understandability of specific terminology, so the LLM can make better sense of specific subject domains. Graph RAG can be combined with the standard RAG approach to get the best of both worlds – the structure and accuracy of the graph representation combined with the vastness of textual content.
+
+We can summarize several varieties of Graph RAG, depending on the nature of the questions, the domain and information in the knowledge graph at hand:
+
+Graph as a Content Store: Extract relevant chunks of documents and ask the LLM to answer using them. This variety requires a KG containing relevant textual content and metadata about it as well as integration with a vector database.
+Graph as а Subject Matter Expert:  Extract descriptions of concepts and entities relevant to the natural language (NL)  question and pass those to the LLM as additional “semantic context”. The description should ideally include relationships between the concepts. This variety requires a KG with a comprehensive conceptual model, including relevant ontologies, taxonomies or other entity descriptions. The implementation requires entity linking or another mechanism for the identification of concepts relevant to the question.
+Graph as a Database: Map (part of) the NL question to a graph query, execute the query and ask the LLM to summarize the results. This variety requires a graph that holds relevant factual information. The implementation of such a pattern requires some sort of NL-to-Graph-query tool and entity linking.
