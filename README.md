@@ -1,5 +1,7 @@
 # **Knowledge Graphs for RAG**
 
+[Complete](https://learn.deeplearning.ai/accomplishments/9a1b493f-e28c-42c9-85a2-5e5d701e00ee?usp=sharing)
+
 **Knowledge graphs** are data structures that can be used in retrieval augmented generation (RAG) applications to enhance query understanding and retrieval accuracy. Knowledge graphs can capture the context and meaning behind data, which can help users uncover insights and connections that might be difficult to find with conventional databases. This contextual understanding is important for RAG applications to generate relevant and coherent responses. 
 In a knowledge graph, data is represented as nodes and relationships. Nodes represent entities like people, organizations, and locations, while relationships define connections between entities. For example, a knowledge graph might capture the "works for" relationship between Sarah, Michael, and prismaticAI. This would allow a RAG application to provide more relevant responses about their employment. 
 Some examples of RAG systems that use knowledge graphs include Graph RAG and combinations of Neo4j + LangChain. Graph RAG uses a graph database to enhance query understanding and retrieval accuracy. Neo4j + LangChain allows users to build question-answering systems that are powered by knowledge graphs.
